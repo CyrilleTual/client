@@ -10,6 +10,9 @@ function NavAdmin() {
         <NavLink className="button" to="/admin/manageCategory">
           Gestion des categories
         </NavLink>
+        <NavLink className="button" to="/admin/addTea">
+          Création des Thés
+        </NavLink>
       </nav>
     );
 }

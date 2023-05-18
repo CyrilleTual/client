@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./addCategory.module.css";
 import ImageUpload from "./Components/ImageUpload";
 
+
 function AddCategory() {
 
 
