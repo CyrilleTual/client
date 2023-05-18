@@ -12,3 +12,11 @@
   border-left: 1px solid #CCCCCC;
   border-radius: 10px;
 }
+
+.header nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
