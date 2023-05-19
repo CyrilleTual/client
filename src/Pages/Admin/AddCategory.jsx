@@ -5,7 +5,6 @@ import ImageUpload from "./Components/ImageUpload";
 
 function AddCategory() {
 
-
   const [values, setValues] = React.useState({
     title: "",
     description: "",

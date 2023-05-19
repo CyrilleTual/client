@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import { BASE_URL } from '../../data/const.js';
 import { PUBLIC_DIR } from "../../data/const";
+import { useSelector } from 'react-redux';
 
 function Category() {
 
@@ -18,6 +19,12 @@ function Category() {
     }
     fetchData();
   }, [reload]);  
+
+  const { categories } = useSelector (state => ({
+    ...state.category,
+  }))
+
+ 
 
   const urlImg = (url) => {
     return( `${PUBLIC_DIR}/img/categories/${url}` ) 
