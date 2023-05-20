@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./addCategory.module.css";
 import ImageUpload from "./Components/ImageUpload";
 
-import { useCreateCategoryMutation } from "../../store/serverApi.js";
-
 
 function AddCategory() {
 
@@ -17,17 +15,31 @@ function AddCategory() {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  ///////////  on veut post formData /////////////////////////////////
+  //////////////////////////
 
-  const [ createCategory, {isLoading}] = useCreateCategoryMutation()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    createCategory(formData);
-   setValues({ ...values, title: "", description: "", imgTitle: "" });
 
+    await fetch("http://localhost:9002/category/add", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("File upload failed");
+        }
+      })
+      .then((data) => {
+        console.log("Server response:", data);
+      })
+      .catch((error) => {
+        console.error("Error uploading file:", error);
+      });
   };
-
  //////////////////////////////////////////////////////////////////
   return (
     <> 
