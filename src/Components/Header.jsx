@@ -26,7 +26,7 @@ function Header() {
           <a href="#" className={style.lienPanier}>
             <span className={style.txt}>Mon Panier</span>
             <div className={style.logoPanier}>
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i className="fa-solid fa-cart-shopping"></i>
               <span>42,00 €</span>
             </div>
           </a>
@@ -34,11 +34,6 @@ function Header() {
 
         <nav>
           <ul>
-            <li>
-              <NavLink className={style.button} to="/">
-                Home
-              </NavLink>
-            </li>
             <li>
               <NavLink className={style.button} to="/test">
                 test

@@ -40,37 +40,38 @@ function Listing() {
       ) : (
         <>
           <h1>Notre carte des thés</h1>
-          
-            {categories.map((category, i) => (
-              <section className={styles.selection}>
 
-                <div key={i}>
-                  <h2>{category.catTitle}</h2>
-                  <p>{category.description}</p>
-                </div>
+          {categories.map((category, i) => (
+            <section key={category.catId} className={styles.selection}>
+              <div>
+                <h2>{category.catTitle}</h2>
+                <p>{category.description}</p>
+              </div>
 
-                <div className={styles.wrapSelection}>
-                  {goodTeas(category.catId).map((tea, i) => (
-                    <article key={i}>
-                      <h3>{tea.mainTitle} </h3>
-                      <figure>
-                        <img src={urlImg(tea.url)} alt="illustration" />
-                      </figure>
-                      <p>{tea.description}</p>
-                      <p>A partir</p>
-                      <p className={styles.prix}>9,00€</p>
-                      <NavLink to={detail(tea.teaId)}>Voir ce produit</NavLink>
-                    </article>
-                  ))}
-                </div>
-
-              </section>
-            ))}
-          
+              <div className={styles.wrapSelection}>
+                {goodTeas(category.catId).map((tea) => (
+                  <article key={tea.Id}>
+                    <h3>{tea.mainTitle} </h3>
+                    <figure>
+                      <img
+                        key={tea.url}
+                        src={urlImg(tea.url)}
+                        alt="illustration"
+                      />
+                    </figure>
+                    <p>{tea.description}</p>
+                    <p>A partir</p>
+                    <p className={styles.prix}>9,00€</p>
+                    <NavLink to={detail(tea.teaId)}>Voir ce produit</NavLink>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
         </>
       )}
     </main>
   );
-}
+};
 
 export default Listing;

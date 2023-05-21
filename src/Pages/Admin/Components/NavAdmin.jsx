@@ -1,9 +1,20 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import styles from "./navAdmin.module.css"
 
 function NavAdmin() {
+
+
+    const toggleStyle = () =>{
+      var element = document.getElementById("navAdmin");
+      element.classList.toggle("hidden");
+
+    }
+
     return (
-      <nav>
+      <>
+      <button className={styles.tgglBtn}   onClick={toggleStyle}>Administration</button>
+      <nav className='' id = "navAdmin">
         <NavLink className="button" to="/admin/addCategory">
           Création de catégories
         </NavLink>
@@ -17,6 +28,9 @@ function NavAdmin() {
           Gestion des Thés
         </NavLink>
       </nav>
+
+      </>
+
     );
 }
 

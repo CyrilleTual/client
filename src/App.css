@@ -88,3 +88,7 @@ img {
 .button:hover, .page_product .formulaires button:hover, .selection a:hover {
   background-color: rgba(176, 144, 103, 0.75);
 }
+
+.hidden{
+  display: none; 
+}

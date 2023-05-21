@@ -8,6 +8,7 @@ import Category from './Pages/Admin/Category';
 import AddTea from './Pages/Admin/AddTea';
 import Teas from './Pages/Admin/Teas';
 import Listing from './Pages/listing/Index';
+import Product from './Pages/Product/Index';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin/addTea" element={<AddTea />} />
         <Route path="/admin/teas" element={<Teas />} />
         <Route path="/listing" element={<Listing />}/>
+        <Route path="/product/:id" element={<Product/>}/>
       </Routes>
     </>
   );
