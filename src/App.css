@@ -1,4 +1,4 @@
-.button {
+/* .button {
     font-size: 25px;
     margin: 10px;
   font: bold 15px Arial;
@@ -11,4 +11,80 @@
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
   border-radius: 10px;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+/*
+ _____ _       _           _ 
+|  __ | |     | |         | |
+| |  \| | ___ | |__   __ _| |
+| | __| |/ _ \| '_ \ / _` | |
+| |_\ | | (_) | |_) | (_| | |
+ \____|_|\___/|_.__/ \__,_|_|*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  margin: 0; /*enleve la marge autour de la page */
+  background-color: #f2f2f2;
+  color: #666;
+}
+
+section {
+  background-color: white;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  font-family: "Amaranth", sans-serif;
+  color: #96b011;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+ul {
+  padding: 10px 0px;
+  list-style: none;
+}
+
+figure {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.clear {
+  clear: both;
+}
+
+.button, .page_product .formulaires button, .selection a {
+  color: #fff;
+  background-color: #b09067;
+  text-transform: uppercase;
+  padding: 20px 20px;
+}
+.button:hover, .page_product .formulaires button:hover, .selection a:hover {
+  background-color: rgba(176, 144, 103, 0.75);
 }

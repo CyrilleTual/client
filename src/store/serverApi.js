@@ -5,6 +5,13 @@ export const serverApi = createApi({
   reducerPath: "serverApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
+    createCategory: builder.mutation({
+      query: (formData) => ({
+        url: `/category/add`,
+        method: "POST",
+        body: formData,
+      }),
+    }),
 
     getCategories: builder.query({
       query: () => `/category`,
@@ -18,11 +25,23 @@ export const serverApi = createApi({
       }),
     }),
 
-    createCategory: builder.mutation({
+    createTea: builder.mutation({
       query: (formData) => ({
-        url: `/category/add`,
+        url: `/tea/add`,
         method: "POST",
-        body:  formData ,
+        body: formData,
+      }),
+    }),
+
+    getTeas: builder.query({
+      query: () => `/tea`,
+      transformResponse: (res) => res.result,
+    }),
+
+    deleteTea: builder.mutation({
+      query: (id) => ({
+        url: `/tea/delete/${id}`,
+        method: "DELETE",
       }),
     }),
 
@@ -34,4 +53,8 @@ export const {
     useGetCategoriesQuery,
     useDeleteCategoryMutation,
     useCreateCategoryMutation, 
+    useCreateTeaMutation,
+    useGetTeasQuery,
+    useDeleteTeaMutation,
+    
 } = serverApi;

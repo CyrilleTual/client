@@ -13,6 +13,9 @@ function NavAdmin() {
         <NavLink className="button" to="/admin/addTea">
           Création des Thés
         </NavLink>
+        <NavLink className="button" to="/admin/teas">
+          Gestion des Thés
+        </NavLink>
       </nav>
     );
 }
