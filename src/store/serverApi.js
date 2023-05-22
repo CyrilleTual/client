@@ -50,11 +50,11 @@ export const serverApi = createApi({
 });
 
 export const { 
-    useGetCategoriesQuery,
-    useDeleteCategoryMutation,
-    useCreateCategoryMutation, 
-    useCreateTeaMutation,
-    useGetTeasQuery,
-    useDeleteTeaMutation,
+  useGetCategoriesQuery,
+  useDeleteCategoryMutation,
+  useCreateCategoryMutation, 
+  useCreateTeaMutation,
+  useGetTeasQuery,
+  useDeleteTeaMutation,
     
 } = serverApi;
