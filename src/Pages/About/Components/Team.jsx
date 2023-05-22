@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './team.module.css'
 
 function Team({staff}) {
 
@@ -12,7 +13,7 @@ function Team({staff}) {
       {!staff ? (
         <p>loading</p>
       ) : (
-        <>
+        <div className={styles.team}>
           {staff.map((member) => (
             <div key= {member.title} >
               <h3>{member.title}</h3>
@@ -23,7 +24,7 @@ function Team({staff}) {
               <div className="clear"></div>
             </div>
           ))}
-        </>
+        </div>
       )}
     </>
   );

@@ -1,0 +1,32 @@
+.values {
+  background-color: rgba(150, 176, 17, 0.2);
+  padding: 45px 15px;
+  text-align: center;
+}
+.values h3 {
+  color: #666;
+  text-align: center;
+}
+
+.values img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin:   auto ;
+   
+}
+
+@media screen and (min-width: 1025px) {
+  .values {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .values div {
+    width: 32%;
+  }
+}

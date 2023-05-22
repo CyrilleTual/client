@@ -35,10 +35,11 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: "Open Sans", sans-serif;
+  font-family: arial, "Open Sans", sans-serif;
   margin: 0; /*enleve la marge autour de la page */
   background-color: #f2f2f2;
   color: #666;
+  line-height: 1.8;
 }
 
 section {
@@ -51,6 +52,7 @@ h3 {
   text-align: center;
   font-family: "Amaranth", sans-serif;
   color: #96b011;
+  font-weight: normal;
 }
 
 h1 {

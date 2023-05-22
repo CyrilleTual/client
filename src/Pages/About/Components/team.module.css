@@ -1,0 +1,28 @@
+.team   h3 {
+  text-align: left;
+  overflow: hidden;
+}
+
+.team h3::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  margin: 0 1rem 0 -100%;
+  vertical-align: middle;
+  border-bottom: 1px solid;
+}
+
+.team h3::after {
+  margin: 0 -100% 0 1rem;
+}
+
+
+.team div:nth-of-type(odd) img{
+    float: left;
+    margin-right: 20px;
+}
+
+.team div:nth-of-type(even) img{
+    float: right;
+    margin-left: 20px;
+}

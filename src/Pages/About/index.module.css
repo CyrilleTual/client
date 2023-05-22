@@ -1,0 +1,18 @@
+.page_about  {
+    background-color: #fff;
+ 
+  padding: 30px 20px;
+}
+
+.page_about h1 {
+  display: none;
+}
+
+.page_about h2 {
+font-size: 3.2rem;
+  color: #666;
+  font-size: 2.5rem;
+  margin: 0px;
+  text-align: left;
+}
+
