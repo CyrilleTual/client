@@ -62,7 +62,9 @@ function Listing() {
                     <p>{tea.description}</p>
                     <p>A partir</p>
                     <p className={styles.prix}>9,00€</p>
-                    <NavLink to={detail(tea.teaId)}>Voir ce produit</NavLink>
+                    <NavLink key={tea.teaId} to={detail(tea.teaId)}>
+                      Voir ce produit
+                    </NavLink>
                   </article>
                 ))}
               </div>

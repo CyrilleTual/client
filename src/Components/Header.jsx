@@ -41,7 +41,7 @@ function Header() {
             </li>
             <li>
               <NavLink className={style.button} to="/listing">
-               Thés
+                Thés
               </NavLink>
             </li>
             <li>
@@ -54,7 +54,9 @@ function Header() {
               <a href="#">&#201;picerie</a>
             </li>
             <li>
-              <a href="about.html">Notre histoire</a>
+              <NavLink className={style.button} to="/about">
+                Notre histoire
+              </NavLink>
             </li>
           </ul>
         </nav>
