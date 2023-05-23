@@ -1,24 +1,33 @@
-.container {
-    max-width: 1100px;
-    margin: auto;
+.adminCat table,
+.adminCat td {
+    border: 1px solid #333;
+    padding: 3px;
+    line-height: 1.2;
+}
 
-}  
+.button {
+    padding: 5px 5px;
 
-.container article {
-    display: block;
-    background-color: #d7d4d4;
-    padding: 20px;
-    margin: 15px;
-    border-radius: 20px;
 }
 
 
-.container img {
-    width: 250px;
-    float: left;
+.adminCat thead,
+.adminCat tfoot {
+    background-color: #515151;
+    color: #fff;
 }
 
-.clear {
-    clear:both;
+.tableH { 
+    overflow: auto;
+    height: 100px; 
+    margin : 0px;  
     
 }
+.noPad {
+    padding: 0px !important;
+}
+ 
+.onOver:hover{
+    cursor: pointer;
+}
+ 

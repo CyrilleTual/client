@@ -35,11 +35,6 @@ function Header() {
         <nav>
           <ul>
             <li>
-              <NavLink className={style.button} to="/test">
-                test
-              </NavLink>
-            </li>
-            <li>
               <NavLink className={style.button} to="/listing">
                 Thés
               </NavLink>

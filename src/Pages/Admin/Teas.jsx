@@ -18,6 +18,21 @@ function Teas() {
     return `${PUBLIC_DIR}/img/teas/${url}`;
   };
 
+  // selection du favorite Tea /////////////////
+  const setFavorite = (newId) => {
+
+    // on retrouve l'ancien tea favori 
+    const oldFavorite = teas.find ((element) => (parseInt(element.isFavorite) ===  1 ));
+    // on passe le isFavorite de l'ancien à 0
+    console.log ("ancien favori", oldFavorite) 
+    // on set le nouveau favori
+    console.log ("nouveau favori", newId)
+
+  }
+
+
+
+
   //selection du nom de la catégorie en fonction de l'id passé avec le thé
   const findCat = (idCat) => {
     for (const category of categories) {
@@ -27,27 +42,60 @@ function Teas() {
 
   /////////////////////////////////////////////////////////////////
   return (
-    <div className={styles.container}>
+    <div className="container">
       {teasLoading || catLoading ? (
         <p>Loading</p>
       ) : (
         <>
-          {teas.map((tea, i) => (
-            <article key={i}>
-              <h3>{tea.mainTitle}</h3>
+          <table className={styles.adminCat}>
+            <thead>
+              <tr>
+                <th>designation</th>
+                <th>catégorie</th>
+                <th>sous titre</th>
+                <th>photo</th>
+                <th>description</th>
+                <th>favori</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {teas.map((tea, i) => (
+                <tr key={i}>
+                  <td>{tea.mainTitle}</td>
+                  <td>{findCat(tea.category_id)}</td>
 
-              <p>Thé de la catégorie {findCat(tea.category_id)}</p>
-              <p>{tea.subTitle}</p>
-
-              <img src={urlImg(tea.url)} />
-              <p>{tea.description}</p>
-
-              <a className="button" onClick={() => deleteTea(tea.teaId)}>
-                Delete
-              </a>
-              <div className={styles.clear}></div>
-            </article>
-          ))}
+                  <td>
+                    <div className={styles.tableH}>{tea.subTitle}</div>
+                  </td>
+                  <td>
+                    <img src={urlImg(tea.url)} />
+                  </td>
+                  <td className={styles.noPad}>
+                    <div className={styles.tableH}>{tea.description}</div>
+                  </td>
+                  <td
+                    className={styles.onOver}
+                    onClick={() => setFavorite(tea.teaId)}
+                  >
+                    {tea.isFavorite !== 0 ? "yes" : "no"}
+                  </td>
+                  <td>
+                    <a className={`button ${styles.button}`}>Modifier</a>
+                  </td>
+                  <td>
+                    <a
+                      className={`button ${styles.button}`}
+                      onClick={() => deleteTea(tea.teaId)}
+                    >
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </>
       )}
     </div>
