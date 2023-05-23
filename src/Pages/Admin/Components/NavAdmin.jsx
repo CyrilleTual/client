@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import styles from "./navAdmin.module.css"
 
 function NavAdmin() {
 
+    useEffect (()=>{
+        var element = document.getElementById("navAdmin");
+        element.classList.toggle("hidden");
+    },[])
+
 
     const toggleStyle = () =>{
       var element = document.getElementById("navAdmin");
       element.classList.toggle("hidden");
-
     }
 
     return (
       <>
+
       <button className={styles.tgglBtn}   onClick={toggleStyle}>Administration</button>
-      <nav className='' id = "navAdmin">
+      <nav className={styles.nav} id = "navAdmin">
         <NavLink className="button" to="/admin/addCategory">
           Création de catégories
         </NavLink>

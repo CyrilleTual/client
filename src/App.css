@@ -94,3 +94,30 @@ img {
 .hidden{
   display: none; 
 }
+
+/********   slider  *********/
+.sliderSlick strong {
+    display: block;
+    margin: 20px 0;
+    color: #96b011;
+    font-size: 4rem;
+    font-family: "Amaranth", sans-serif;
+    font-weight: normal;
+  }
+.slick-prev,
+.sliderSlick .slick-prev {
+    left: 20px;
+    z-index: 1;
+  }
+.slick-next,
+.sliderSlick .slick-next {
+    right: 20px;
+}
+.sliderSlick .slick-dots li button:before {
+    font-size: 15px;
+  }  
+
+  .sliderSlick small {
+    display: inline-block;
+    margin: 5px 0 30px 0;
+  }

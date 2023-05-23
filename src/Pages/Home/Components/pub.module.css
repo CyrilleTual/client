@@ -1,0 +1,19 @@
+.pub {
+  display: none;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .pub {
+    display: block;
+    text-align: center;
+  }
+  .pub strong {
+    display: block;
+    margin: 20px 0;
+    color: #96b011;
+    font-size: 4rem;
+    font-family: "Amaranth", sans-serif;
+    font-weight: normal;
+  }
+}

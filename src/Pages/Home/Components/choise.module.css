@@ -1,0 +1,35 @@
+.choiseThe {
+  margin-top: 30px;
+  padding: 20px;
+}
+.choiseThe .itemsWrapper {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+@media screen and (min-width: 1025px) {
+  .choiseThe .itemsWrapper {
+    flex-wrap: nowrap;
+  }
+}
+.choiseThe .itemsWrapper:hover a {
+  opacity: 0.5;
+}
+.choiseThe .itemsWrapper a {
+  width: 48%;
+}
+.choiseThe .itemsWrapper a figure {
+  margin: 0;
+  padding: 0;
+  color: #666;
+  text-align: center;
+  font-family: "Amaranth", sans-serif;
+}
+.choiseThe .itemsWrapper a:hover {
+  opacity: 1;
+}
