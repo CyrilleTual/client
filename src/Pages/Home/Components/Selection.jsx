@@ -31,19 +31,18 @@ function Selection() {
     {teasLoading ? (
         <p>Loading</p>
       ) : (
-      <section className="container selection">
-        <h2>Notre sélection</h2>
-        <div className="wrapSelection">
+      <section className={`container ${styles.selection}`}>
+        <div className={styles.wrapSelection}>
           <article>
-            <h3>Notre nouveauté</h3>
+            <h2>Notre nouveauté</h2>
             <SelectionCard tea={newTea()} />
           </article>
           <article>
-            <h3>Notre best-seller</h3>
+            <h2>Notre best-seller</h2>
             <SelectionCard tea={bestTea()} />
           </article>
           <article>
-            <h3>Notre coup de coeur</h3>
+            <h2>Notre coup de coeur</h2>
             <SelectionCard tea={lovedTea()} />
           </article>
         </div>

@@ -1,0 +1,26 @@
+.selection {
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+}
+@media screen and (min-width: 1025px) {
+  .selection .wrapSelection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+}
+
+.selection article {
+  padding: 0 15px;
+}
+@media screen and (min-width: 1025px) {
+  .selection article {
+    width: 33%;
+  }
+}

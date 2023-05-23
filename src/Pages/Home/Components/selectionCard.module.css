@@ -1,0 +1,16 @@
+.selectionCard figcaption {
+  font-family: "Amaranth", sans-serif;
+  font-size: 2rem;
+}
+.prix {
+  font-size: 2.4rem;
+}
+
+.detailsBtn {
+  display: inline-block;
+    color: #fff;
+    background-color: #b09067;
+    text-transform: uppercase;
+    padding: 20px 20px;
+}
+

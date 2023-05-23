@@ -1,25 +1,33 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { PUBLIC_DIR } from '../../../data/const';
+import styles  from './selectionCard.module.css';
 
 function SelectionCard({tea}) {
-  console.log(tea);
 
-  // recup de l'image /////////////////////////////////
+  // recup de l'image /////////////////////////////////////
   const urlImg = (url) => {
     return `${PUBLIC_DIR}/img/teas/${url}`;
   };
-  ////////////////////////////////////////////////////
+  ///// lien vers le detail produit ///////////////////////
+  const detail = (idTea) => {
+    return `/product/${idTea}`;
+  };
+  
+  //////////////////////////////////////////////////////////
 
   return (
     <>
-      <figure>
+      <figure className={styles.selectionCard}>
         <img key={tea.url} src={urlImg(tea.url)} alt="illustration" />
         <figcaption>{tea.mainTitle}</figcaption>
       </figure>
       <p>{tea.description}</p>
       <p>A partir</p>
-      <p class="prix">7.60€</p>
-      <a href="# ">Voir ce produit</a>
+      <p className={styles.prix}>7.60€</p>
+      <NavLink className={styles.detailsBtn} key={tea.teaId} to={detail(tea.teaId)}>
+        Voir ce produit
+      </NavLink>
     </>
   );
 }
