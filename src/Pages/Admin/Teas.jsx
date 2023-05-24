@@ -1,5 +1,7 @@
 import styles from "./teas.module.css";
 import { useNavigate } from "react-router-dom";
+import  {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons' 
 
 // import des middlewares de redux
 import {
@@ -80,14 +82,25 @@ function Teas() {
                     className={styles.onOver}
                     onClick={() => switchFavorite(tea.teaId)}
                   >
-                    {tea.isFavorite !== 0 ? "yes" : "no"}
+                    {tea.isFavorite !== 0 ? (
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        beat
+                        size="xl"
+                        style={{ color: "#a0bf31" }}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faXmark}
+                        size="xl"
+                        style={{ color: "#e50b0b" }}
+                      />
+                    )}
                   </td>
                   <td>
                     <a
                       className={`button ${styles.button}`}
-                      onClick={() =>
-                        navigate(`/admin/mofifyTea/${tea.teaId}`)
-                      }
+                      onClick={() => navigate(`/admin/mofifyTea/${tea.teaId}`)}
                     >
                       Modifier
                     </a>
