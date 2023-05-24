@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router";
-import {
-  useGetPackagingsQuery,
-  useGetTeaPackQuery,
-  useGetTeasQuery,
-} from "../../store/serverApi.js";
+import { useGetTeasQuery } from "../../store/serverApi.js";
 import { PUBLIC_DIR } from "../../data/const.js";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -14,21 +10,19 @@ function Product() {
   // recup de l'id du produit passé en paramètre
   const { id } = useParams();
   const navigate = useNavigate();
-  let availablesPacks = [];
 
   // recuperation des thés
   const { data: teas, isLoading: teasLoading } = useGetTeasQuery();
-  // recupération des teapacks
-  const { data: teaPacks, isLoading: teaPacksLoading } = useGetTeaPackQuery();
-  // recupétation des packagings
-
-  const { data: packagings, isLoading: packagingsLoading } =
-    useGetPackagingsQuery();
-
 
   // recup de l'image /////////////////////////////////////
   const urlImg = (url) => {
     return `${PUBLIC_DIR}/img/teas/${url}`;
+  };
+
+  ////// formulaire de choix //////////////////////////////
+  const [pannier, setPannier] = useState("20,55");
+  const handleChange = (e) => {
+    setPannier(e.target.value);
   };
 
   // navigation vers Prévious /////////////////////////////
@@ -40,6 +34,7 @@ function Product() {
     // redirection vers le thé précédent
     return navigate(`/product/${teas[index - 1].teaId}`);
   };
+
   //////  navigation vers next ////////////////////////////
   const navNext = () => {
     const index = teas.findIndex((tea) => tea.teaId === parseInt(id));
@@ -48,39 +43,11 @@ function Product() {
     return navigate(`/product/${teas[index + 1].teaId}`);
   };
 
- 
-  ////// formulaire de choix //////////////////////////////
-  // on recupère les teaPackagings qui correspondent au thé selectionné
-  const goodArray = () => {
-    if (!teasLoading && !teaPacksLoading && !packagingsLoading) {
-      availablesPacks = teaPacks.filter(
-        (element) => element.tea_id === parseInt(id)
-      );
-      let newArray = []
-  // et on ajoute le pack weight //////////// /////////
-      for (let item of availablesPacks)   {
-        for (let pack of packagings) {
-          if(item.packaging_id == pack.id){   // les cles matchent
-            newArray.push({ ...item, packaging: pack.weight }); 
-          }
-        }
-      };
-      return newArray;
-    }
-  };
-
-  const [choise, setChoise] = useState(""); 
-
-  const handleChange = (e) => {
-    setChoise(e.target.value);
-  };
-
   /////////////////////////////////////////////////////////
+
   return (
     <main className={`container ${styles.page_product}`}>
-      {teasLoading ||
-      teaPacksLoading ||
-      packagingsLoading || goodArray().length === 0 ? (
+      {teasLoading ? (
         <p>Loading</p>
       ) : (
         <>
@@ -122,25 +89,16 @@ function Product() {
                   <div className={styles.formulaires}>
                     <form>
                       <select
-                        name="choise"
-                        value={choise}
                         onChange={handleChange}
-                        
-                         
+                        name="panier"
+                        id="panier"
+                        value={pannier}
                       >
-
-                        <option>Make your choise</option>
-                        {goodArray().map((product, i) => {
-                          return(
-                            <option key={i} value={product.price}>
-                              {product.packaging}
-                            </option>
-                          )
-                        })}
-
-
+                        <option value="5,88">sachet de 100g </option>
+                        <option value="20,68">Sachet de 500g</option>
+                        <option value="34,88">Sachet de 1kg</option>
                       </select>
-                      <div id="affPrix">{choise} €</div>
+                      <div id="affPrix">{pannier}</div>
                       <button>Ajouter au pannier</button>
                     </form>
                     <form id="wish">

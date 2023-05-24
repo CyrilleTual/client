@@ -25,7 +25,7 @@ export const serverApi = createApi({
         url: `/category/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ['Category']
+      invalidatesTags: ["Category"],
     }),
 
     createTea: builder.mutation({
@@ -34,7 +34,7 @@ export const serverApi = createApi({
         method: "POST",
         body: formData,
       }),
-      invalidatesTags: ['Tea']
+      invalidatesTags: ["Tea"],
     }),
 
     getTeas: builder.query({
@@ -73,6 +73,27 @@ export const serverApi = createApi({
       }),
       invalidatesTags: ["Tea"],
     }),
+
+    getPackagings: builder.query({
+      query: () => `/pack`,
+      transformResponse: (res) => res.result,
+      providesTags: ["Pack"],
+    }),
+
+    getTeaPack: builder.query({
+      query: () => `/teaPackaging`,
+      transformResponse: (res) => res.result,
+      providesTags: ["TeaPack"],
+    }),
+
+    createTeaPack: builder.mutation({
+      query: ({ ...rest }) => ({
+        url: `/teaPackaging/add`,
+        method: "POST",
+        body: rest,
+      }),
+      invalidatesTags: ["TeaPack"],
+    }),
   }),
 });
 
@@ -86,5 +107,8 @@ export const {
   useDeleteTeaMutation,
   useUpdateTeaMutation,
   useSetFavoriteMutation,
-    
+  useGetPackagingsQuery,
+  useCreateTeaPackMutation,
+  useGetTeaPackQuery,
+
 } = serverApi;
