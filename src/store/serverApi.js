@@ -4,6 +4,7 @@ import { BASE_URL } from "../data/const.js";
 export const serverApi = createApi({
   reducerPath: "serverApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+  tagTypes: ["Tea", "Category"],
   endpoints: (builder) => ({
     createCategory: builder.mutation({
       query: (formData) => ({
@@ -16,6 +17,7 @@ export const serverApi = createApi({
     getCategories: builder.query({
       query: () => `/category`,
       transformResponse: (res) => res.categories,
+      providesTags: ["Category"],
     }),
 
     deleteCategory: builder.mutation({
@@ -23,6 +25,7 @@ export const serverApi = createApi({
         url: `/category/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ['Category']
     }),
 
     createTea: builder.mutation({
@@ -31,11 +34,13 @@ export const serverApi = createApi({
         method: "POST",
         body: formData,
       }),
+      invalidatesTags: ['Tea']
     }),
 
     getTeas: builder.query({
       query: () => `/tea`,
       transformResponse: (res) => res.result,
+      providesTags: ["Tea"],
     }),
 
     getOneTea: builder.query({
@@ -49,14 +54,16 @@ export const serverApi = createApi({
         method: "PUT",
         body: rest,
       }),
+      invalidatesTags: ["Tea"],
     }),
 
     setFavorite: builder.mutation({
-      query: ({...rest }) => ({
+      query: ({ ...rest }) => ({
         url: `/tea/favorite`,
         method: "PUT",
         body: rest,
       }),
+      invalidatesTags: ["Tea"],
     }),
 
     deleteTea: builder.mutation({
@@ -64,6 +71,7 @@ export const serverApi = createApi({
         url: `/tea/delete/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Tea"],
     }),
   }),
 });

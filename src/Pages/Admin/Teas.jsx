@@ -25,26 +25,14 @@ function Teas() {
 
   // selection du favorite Tea /////////////////
   const switchFavorite = (newId) => {
-
-    
     // on retrouve l'ancien tea favori 
     const oldFavorite = (teas.find ((element) => (parseInt(element.isFavorite) ===  1 )).teaId);
-  
-    console.log ("id ancien favori", oldFavorite) 
-    console.log ("id nouveau favori", newId)
-
-     const data = JSON.stringify({
-       newFavoriteId: newId,
-       oldFavoriteId: oldFavorite,
-     });
-
-     console.log ("data-favorite", data) ;
-     setFavorite({data})
-
-
-
+    const data = JSON.stringify({
+      newFavoriteId: newId,
+      oldFavoriteId: oldFavorite,
+    });
+    setFavorite({data})
   }
-
 
   //selection du nom de la catégorie en fonction de l'id passé avec le thé
   const findCat = (idCat) => {

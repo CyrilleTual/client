@@ -20,11 +20,11 @@ function Selection() {
     return teas[index];
   };
 
-  // thé avec marqueur loved ( random pour l'instant ) /////
+  // thé avec marqueur loved ///////////////////////////////
   const lovedTea = () => {
-    const index = Math.floor(Math.random() * (teas.length));
-    return teas[index];
+    return (teas.find((element) => parseInt(element.isFavorite) === 1));
   };
+
   //////////////////////////////////////////////////////////
   return (
     <>
