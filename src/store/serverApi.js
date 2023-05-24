@@ -38,14 +38,33 @@ export const serverApi = createApi({
       transformResponse: (res) => res.result,
     }),
 
+    getOneTea: builder.query({
+      query: (id) => `/tea/${id}`,
+      transformResponse: (res) => res.result,
+    }),
+
+    updateTea: builder.mutation({
+      query: ({ id, ...rest }) => ({
+        url: `/tea/modify/${id}`,
+        method: "PUT",
+        body: rest,
+      }),
+    }),
+
+    setFavorite: builder.mutation({
+      query: ({...rest }) => ({
+        url: `/tea/favorite`,
+        method: "PUT",
+        body: rest,
+      }),
+    }),
+
     deleteTea: builder.mutation({
       query: (id) => ({
         url: `/tea/delete/${id}`,
         method: "DELETE",
       }),
     }),
-
-
   }),
 });
 
@@ -55,6 +74,9 @@ export const {
   useCreateCategoryMutation, 
   useCreateTeaMutation,
   useGetTeasQuery,
+  useGetOneTeaQuery,
   useDeleteTeaMutation,
+  useUpdateTeaMutation,
+  useSetFavoriteMutation,
     
 } = serverApi;

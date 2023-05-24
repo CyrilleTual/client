@@ -1,36 +1,49 @@
 import styles from "./teas.module.css";
+import { useNavigate } from "react-router-dom";
 
 // import des middlewares de redux
 import {
   useGetCategoriesQuery,
   useGetTeasQuery,
   useDeleteTeaMutation,
+  useSetFavoriteMutation,
 } from "../../store/serverApi.js";
 import { PUBLIC_DIR } from "../../data/const";
 
 function Teas() {
+
+  const navigate = useNavigate();
   // middleware
   const { data: teas, isLoading: teasLoading } = useGetTeasQuery();
   const { data: categories, isLoading: catLoading } = useGetCategoriesQuery();
   const [deleteTea] = useDeleteTeaMutation();
+  const [setFavorite, { isLoading }] = useSetFavoriteMutation();
 
   const urlImg = (url) => {
     return `${PUBLIC_DIR}/img/teas/${url}`;
   };
 
   // selection du favorite Tea /////////////////
-  const setFavorite = (newId) => {
+  const switchFavorite = (newId) => {
 
+    
     // on retrouve l'ancien tea favori 
-    const oldFavorite = teas.find ((element) => (parseInt(element.isFavorite) ===  1 ));
-    // on passe le isFavorite de l'ancien à 0
-    console.log ("ancien favori", oldFavorite) 
-    // on set le nouveau favori
-    console.log ("nouveau favori", newId)
+    const oldFavorite = (teas.find ((element) => (parseInt(element.isFavorite) ===  1 )).teaId);
+  
+    console.log ("id ancien favori", oldFavorite) 
+    console.log ("id nouveau favori", newId)
+
+     const data = JSON.stringify({
+       newFavoriteId: newId,
+       oldFavoriteId: oldFavorite,
+     });
+
+     console.log ("data-favorite", data) ;
+     setFavorite({data})
+
+
 
   }
-
-
 
 
   //selection du nom de la catégorie en fonction de l'id passé avec le thé
@@ -77,12 +90,19 @@ function Teas() {
                   </td>
                   <td
                     className={styles.onOver}
-                    onClick={() => setFavorite(tea.teaId)}
+                    onClick={() => switchFavorite(tea.teaId)}
                   >
                     {tea.isFavorite !== 0 ? "yes" : "no"}
                   </td>
                   <td>
-                    <a className={`button ${styles.button}`}>Modifier</a>
+                    <a
+                      className={`button ${styles.button}`}
+                      onClick={() =>
+                        navigate(`/admin/mofifyTea/${tea.teaId}`)
+                      }
+                    >
+                      Modifier
+                    </a>
                   </td>
                   <td>
                     <a

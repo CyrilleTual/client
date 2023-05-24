@@ -9,6 +9,7 @@ import Teas from './Pages/Admin/Teas';
 import Listing from './Pages/listing/Index';
 import Product from './Pages/Product/Index';
 import About from './Pages/About/index';
+import ModifyTea from './Pages/Admin/ModifyTea';
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <Route path="/listing" element={<Listing />}/>
         <Route path="/product/:id" element={<Product/>}/>
         <Route path='/about' element={<About/>}/>
+        <Route path='/admin/mofifyTea/:id' element={<ModifyTea/>}/>
+         
       </Routes>
     </>
   );
