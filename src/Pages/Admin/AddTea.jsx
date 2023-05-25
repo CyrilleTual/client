@@ -80,9 +80,8 @@ function AddTea() {
               Choisissez une catégorie
             </label>
 
-            <select onChange={handleChange} id="category_id" name="category_id">
+            <select   id="category_id" name="category_id">
               <option value="0" />
-              
               {categories.map((category, i) => (
                 <option key={i} value={category.catId}>
                   {category.catTitle}

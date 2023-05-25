@@ -70,6 +70,11 @@ function Product() {
   };
 
   const [choise, setChoise] = useState(""); 
+  // necessaire pour reset entre changement de vue 
+  useEffect (()=>{
+    setChoise ("")
+  },[id])
+
 
   const handleChange = (e) => {
     setChoise(e.target.value);
@@ -124,7 +129,7 @@ function Product() {
                       <select
                         name="choise"
                         value={choise}
-                        onChange={handleChange}
+                        onChange={handleChange}-
                         
                          
                       >
