@@ -16,6 +16,12 @@ function Product() {
   const navigate = useNavigate();
   let availablesPacks = [];
 
+
+  const handleChange = (e) => {
+    setChoise(e.target.value);
+  };
+
+
   // recuperation des thés
   const { data: teas, isLoading: teasLoading } = useGetTeasQuery();
   // recupération des teapacks
@@ -57,7 +63,7 @@ function Product() {
         (element) => element.tea_id === parseInt(id)
       );
       let newArray = []
-  // et on ajoute le pack weight //////////// /////////
+       // et on ajoute le pack weight //////////// /////////
       for (let item of availablesPacks)   {
         for (let pack of packagings) {
           if(item.packaging_id == pack.id){   // les cles matchent
@@ -65,27 +71,31 @@ function Product() {
           }
         }
       };
-      return newArray;
+      return newArray
     }
   };
+ 
 
   const [choise, setChoise] = useState(""); 
+  let newArray2 = [];
   // necessaire pour reset entre changement de vue 
-  useEffect (()=>{
-    setChoise ("")
-  },[id])
+  useEffect(() => {
+    if (!teasLoading && !teaPacksLoading && !packagingsLoading) {    
+      console.log ("choix", (goodArray())[0].price)
+      setChoise ((goodArray())[0].price)
+    }
 
+  }, [id, teasLoading, teaPacksLoading, packagingsLoading]);
 
-  const handleChange = (e) => {
-    setChoise(e.target.value);
-  };
+ 
 
   /////////////////////////////////////////////////////////
   return (
     <main className={`container ${styles.page_product}`}>
       {teasLoading ||
       teaPacksLoading ||
-      packagingsLoading || goodArray().length === 0 ? (
+      packagingsLoading ||
+      goodArray().length === 0  ? (
         <p>Loading</p>
       ) : (
         <>
@@ -129,12 +139,8 @@ function Product() {
                       <select
                         name="choise"
                         value={choise}
-                        onChange={handleChange}-
-                        
-                         
+                        onChange={handleChange}
                       >
-
-                        <option>Make your choise</option>
                         {goodArray().map((product, i) => {
                           return(
                             <option key={i} value={product.price}>
@@ -142,8 +148,13 @@ function Product() {
                             </option>
                           )
                         })}
-
-
+                        {newArray2.map((product, i) => {
+                          return (
+                            <option key={i} value={product.price}>
+                              {product.packaging}
+                            </option>
+                          );
+                        })}
                       </select>
                       <div id="affPrix">{choise} €</div>
                       <button>Ajouter au pannier</button>
